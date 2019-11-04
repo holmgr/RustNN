@@ -344,10 +344,10 @@ impl NN {
     // updates all weights in the network
     fn update_weights(&mut self, network_weight_updates: &Vec<Vec<Vec<f64>>>, prev_deltas: &mut Vec<Vec<Vec<f64>>>, rate: f64, momentum: f64) {
         for layer_index in 0..self.layers.len() {
-            let mut layer = &mut self.layers[layer_index];
+            let layer = &mut self.layers[layer_index];
             let layer_weight_updates = &network_weight_updates[layer_index];
             for node_index in 0..layer.len() {
-                let mut node = &mut layer[node_index];
+                let node = &mut layer[node_index];
                 let node_weight_updates = &layer_weight_updates[node_index];
                 for weight_index in 0..node.len() {
                     let weight_update = node_weight_updates[weight_index];
@@ -377,7 +377,7 @@ impl NN {
 
             for (node_index, (node, &result)) in iter_zip_enum(layer_nodes, layer_results) {
                 let mut node_weight_updates = Vec::new();
-                let mut node_error;
+                let node_error;
 
                 // calculate error for this node
                 if layer_index == layers.len() - 1 {
@@ -393,7 +393,7 @@ impl NN {
 
                 // calculate weight updates for this node
                 for weight_index in 0..node.len() {
-                    let mut prev_layer_result;
+                    let prev_layer_result;
                     if weight_index == 0 {
                         prev_layer_result = 1f64; // threshold
                     } else {
