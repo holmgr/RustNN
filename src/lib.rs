@@ -264,17 +264,6 @@ impl NN {
         }
     }
 
-    /// Encodes the network as a JSON string.
-    pub fn to_json(&self) -> String {
-        json::encode(self).ok().expect("encoding JSON failed")
-    }
-
-    /// Builds a new network from a JSON string.
-    pub fn from_json(encoded: &str) -> NN {
-        let network: NN = json::decode(encoded).ok().expect("decoding JSON failed");
-        network
-    }
-
     fn train_details(&mut self, examples: &[(Vec<f64>, Vec<f64>)], rate: f64, momentum: f64, log_interval: Option<u32>,
                     halt_condition: HaltCondition) -> f64 {
 

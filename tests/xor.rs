@@ -24,10 +24,6 @@ fn xor_4layers() {
         .momentum(0.1)
         .go();
 
-    // make sure json encoding/decoding works as expected
-    let json = net1.to_json();
-    let net2 = NN::from_json(&json);
-
     // test the trained network
     for &(ref inputs, ref outputs) in examples.iter() {
         let results = net2.run(inputs);
