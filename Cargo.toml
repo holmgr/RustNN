@@ -7,6 +7,7 @@ repository = "https://github.com/jackm321/RustNN"
 documentation = "https://jackm321.github.io/RustNN/doc/nn/"
 license = "Apache-2.0"
 readme = "README.md"
+edition = "2018"
 
 description = """
 A multilayer feedforward backpropagation neural network library
@@ -16,6 +17,6 @@ keywords = ["nn", "neural-network", "classifier", "backpropagation",
             "machine-learning"]
 
 [dependencies]
-rand = "0.3.7"
-rustc-serialize = "0.3.12"
-time = "0.1.24"
+rand = "0.7.2"
+time = "0.1.42"
+serde = { version = "1.0", features = ["derive"] }

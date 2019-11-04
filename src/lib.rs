@@ -55,15 +55,12 @@
 //! }
 //! ```
 
-extern crate rand;
-extern crate rustc_serialize;
-extern crate time;
+use serde::{Serialize, Deserialize};
 
 use HaltCondition::{ Epochs, MSE, Timer };
 use LearningMode::{ Incremental };
 use std::iter::{Zip, Enumerate};
 use std::slice;
-use rustc_serialize::json;
 use time::{ Duration, PreciseTime };
 use rand::Rng;
 
@@ -184,7 +181,7 @@ impl<'a,'b> Trainer<'a,'b>  {
 }
 
 /// Neural network
-#[derive(Debug, Clone, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NN {
     layers: Vec<Vec<Vec<f64>>>,
     num_inputs: u32,
