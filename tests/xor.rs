@@ -26,7 +26,7 @@ fn xor_4layers() {
 
     // test the trained network
     for &(ref inputs, ref outputs) in examples.iter() {
-        let results = net2.run(inputs);
+        let results = net1.run(inputs);
         let (result, key) = (results[0].round(), outputs[0]);
         assert!(result == key);
     }
