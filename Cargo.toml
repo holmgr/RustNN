@@ -1,5 +1,4 @@
 [package]
-
 name = "nn"
 version = "0.1.6"
 authors = ["Jack Montgomery <jackm321@gmail.com>"]
@@ -9,13 +8,28 @@ license = "Apache-2.0"
 readme = "README.md"
 edition = "2018"
 
-description = """
-A multilayer feedforward backpropagation neural network library
-"""
-
-keywords = ["nn", "neural-network", "classifier", "backpropagation",
-            "machine-learning"]
-
 [dependencies]
 rand = "0.7.2"
+rand_distr = "0.2.2"
 serde = { version = "1.0", features = ["derive"] }
+
+[profile.dev]
+opt-level = 3
+lto = true
+panic = "unwind"
+debug = true
+debug-assertions = true
+
+[profile.test]
+opt-level = 0
+lto = false
+panic = "unwind"
+debug = true
+debug-assertions = true
+
+[profile.release]
+opt-level = 3
+lto = true
+panic = "unwind"
+debug = false
+debug-assertions = false
